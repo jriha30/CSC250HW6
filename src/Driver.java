@@ -8,11 +8,18 @@ public class Driver
 	{
 		BibleBook[] ar = new BibleBook[27];
 		Scanner input = new Scanner(new File(System.getProperty("user.dir") + "/src/input.dat"));
-		while(input.hasNext())
+		for(int i = 0; i < ar.length; i++)
 		{
-			BibleBook a = new BibleBook(input.nextLine());
-			a.display();
+			while(input.hasNext())
+			{
+				BibleBook a = new BibleBook(input.nextLine());
+				ar[i] = a;
+				break;
+			}
 		}
-		input.close();
+		for(BibleBook s : ar)
+		{
+			s.display();
+		}
 	}
 }
