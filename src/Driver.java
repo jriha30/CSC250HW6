@@ -6,18 +6,23 @@ public class Driver
 {
 	public static void main(String[] args) throws FileNotFoundException
 	{
-		BibleBook[] ar = new BibleBook[27];
 		Scanner input = new Scanner(new File(System.getProperty("user.dir") + "/src/input.dat"));
-		for(int i = 0; i < ar.length; i++)
+		int numLines = 0;
+		while(input.hasNext())
 		{
-			while(input.hasNext())
-			{
-				BibleBook a = new BibleBook(input.nextLine());
-				ar[i] = a;
-				break;
-			}
+			numLines++;
+			input.nextLine();
 		}
-		for(BibleBook s : ar)
+		input.close();
+		BibleBook[] books = new BibleBook[numLines];
+		input = new Scanner(new File(System.getProperty("user.dir") + "/src/input.dat"));
+		int pos = 0;
+		while(input.hasNext())
+		{
+			books[pos] = new BibleBook(input.nextLine());
+			pos++;
+		}
+		for(BibleBook s : books)
 		{
 			s.display();
 		}
